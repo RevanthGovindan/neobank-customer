@@ -5,7 +5,7 @@ var name = date.getDate()+"-"+date.getMonth()+"-"+date.getFullYear();
 log4js.configure({
     appenders: { data: { 
         type: 'file', 
-        filename: `${name}.log`,
+        filename: `logs/${name}.log`,
         maxLogSize : 1073741824
     } },
     categories: { default: { appenders: ['data'], level: 'debug' } }

@@ -1,4 +1,0 @@
-[2019-09-30T10:56:27.932] [DEBUG] data - GET /api/customer/getbankaccounts  Params: {}
-[2019-09-30T10:56:28.448] [DEBUG] data - {"data":[],"infoID":"0","infoMsg":"Accounts"}
-[2019-09-30T10:56:42.597] [DEBUG] data - GET /api/customer/gettransactions  Params: {}
-[2019-09-30T10:56:43.177] [DEBUG] data - {"infoID":"1","infoMsg":"No Data Available"}
