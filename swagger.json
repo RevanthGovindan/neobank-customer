@@ -1,0 +1,325 @@
+{
+    "swagger": "2.0",
+    "info": {
+        "version": "1.0.0",
+        "title": "Neo Bank"
+    },
+    "host": "localhost:4000",
+    "basePath": "/api",
+    "schemes": [
+        "http"
+    ],
+    "consumes": [
+        "application/json"
+    ],
+    "produces": [
+        "application/json"
+    ],
+    "paths": {
+        "/customer/login": {
+            "post": {
+                "tags": [
+                    "Customer"
+                ],
+                "description": "login customer",
+                "parameters": [
+                    {
+                        "name": "customer",
+                        "in": "body",
+                        "description": "customer login",
+                        "schema": {
+                            "$ref": "#/definitions/logincustomer"
+                        }
+                    }
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "success"
+                    }
+                }
+            }
+        },
+        "/customer/logout": {
+            "get": {
+                "tags": [
+                    "Customer"
+                ],
+                "description": "logout customer",
+                "parameters": [
+                    {
+                        "name": "authorization",
+                        "in": "header",
+                        "type": "string",
+                        "required": true
+                    }
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "success"
+                    }
+                }
+            }
+        },
+        "/customer/getbankaccounts": {
+            "get": {
+                "tags": [
+                    "Customer"
+                ],
+                "parameters": [
+                    {
+                        "name": "authorization",
+                        "in": "header",
+                        "type": "string",
+                        "required": true
+                    }
+                ],
+                "description": "bank accounts",
+                "produces": [
+                    "application/json"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "success"
+                    }
+                }
+            }
+        },
+        "/customer/getbankaccountdetails/{account_id}": {
+            "get": {
+                "tags": [
+                    "Customer"
+                ],
+                "parameters": [
+                    {
+                        "name": "authorization",
+                        "in": "header",
+                        "type": "string",
+                        "required": true
+                    },
+                    {
+                        "name": "account_id",
+                        "in": "path",
+                        "description": "account_id",
+                        "required": true
+                    }
+                ],
+                "description": "bank accounts",
+                "produces": [
+                    "application/json"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "success"
+                    }
+                }
+            }
+        },
+        "/customer/addpayee": {
+            "post": {
+                "tags": [
+                    "Customer"
+                ],
+                "description": "add payee",
+                "parameters": [
+                    {
+                        "name": "authorization",
+                        "in": "header",
+                        "type": "string",
+                        "required": true
+                    },
+                    {
+                        "name": "payee",
+                        "in": "body",
+                        "description": "add payee",
+                        "schema": {
+                            "$ref": "#/definitions/addpayee"
+                        }
+                    }
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "success"
+                    }
+                }
+            }
+        },
+        "/customer/getpayees": {
+            "get": {
+                "tags": [
+                    "Customer"
+                ],
+                "parameters": [
+                    {
+                        "name": "authorization",
+                        "in": "header",
+                        "type": "string",
+                        "required": true
+                    }
+                ],
+                "description": "payee accounts",
+                "produces": [
+                    "application/json"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "success"
+                    }
+                }
+            }
+        },
+        "/customer/deletepayee/{target_customer_id}": {
+            "delete": {
+                "tags": [
+                    "Customer"
+                ],
+                "parameters": [
+                    {
+                        "name": "authorization",
+                        "in": "header",
+                        "type": "string",
+                        "required": true
+                    },
+                    {
+                        "name": "target_customer_id",
+                        "in": "path",
+                        "description": "targetCustomerID",
+                        "required": true
+                    }
+                ],
+                "description": "delete payee",
+                "produces": [
+                    "application/json"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "success"
+                    }
+                }
+            }
+        },
+        "/customer/fundtransfer": {
+            "post": {
+                "tags": [
+                    "Customer"
+                ],
+                "description": "transfer amount",
+                "parameters": [
+                    {
+                        "name": "authorization",
+                        "in": "header",
+                        "type": "string",
+                        "required": true
+                    },
+                    {
+                        "name": "transfer",
+                        "in": "body",
+                        "description": "transfet to other bank account",
+                        "schema": {
+                            "$ref": "#/definitions/transfer"
+                        }
+                    }
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "success"
+                    }
+                }
+            }
+        },
+        "/customer/gettransactions": {
+            "get": {
+                "tags": [
+                    "Customer"
+                ],
+                "parameters": [
+                    {
+                        "name": "authorization",
+                        "in": "header",
+                        "type": "string",
+                        "required": true
+                    }
+                ],
+                "description": "transactions",
+                "produces": [
+                    "application/json"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "success"
+                    }
+                }
+            }
+        }
+    },
+    "definitions": {
+        "logincustomer": {
+            "required": [
+                "customer_id",
+                "mpin"
+            ],
+            "properties": {
+                "data": {
+                    "type": "object",
+                    "properties": {
+                        "customer_id": {
+                            "type": "string",
+                            "uniqueItems": true
+                        },
+                        "mpin": {
+                            "type": "string",
+                            "uniqueItems": true
+                        }
+                    }
+                }
+            }
+        },
+        "addpayee": {
+            "properties": {
+                "data": {
+                    "type": "object",
+                    "properties": {
+                        "target_account_id": {
+                            "type": "string"
+                        }
+                    }
+                }
+            }
+        },
+        "transfer": {
+            "properties": {
+                "data": {
+                    "type": "object",
+                    "properties": {
+                        "source_account_id": {
+                            "type": "string"
+                        },
+                        "target_account_id": {
+                            "type": "string"
+                        },
+                        "amount": {
+                            "type": "number"
+                        },
+                        "remarks": {
+                            "type": "string"
+                        },
+                        "transaction_type": {
+                            "type": "string"
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
